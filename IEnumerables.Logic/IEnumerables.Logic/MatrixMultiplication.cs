@@ -40,7 +40,7 @@
             return output;
         }
 
-        public static List<List<int>> MatrixMultiplication(List<List<int>> matrix1, List<List<int>> matrix2)
+        public static List<List<int>> Multiplication(List<List<int>> matrix1, List<List<int>> matrix2)
         {
             int rows1 = matrix1.Count;
             int cols1 = matrix1[0].Count;
