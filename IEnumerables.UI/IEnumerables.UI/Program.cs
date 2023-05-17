@@ -52,7 +52,7 @@ void Harvesting()
 void DecompositionByFactors()
 {
     #region 35-Descompotition Into Factors
-    Console.WriteLine("   ****Descompotition Into Factors****");
+    Console.WriteLine("****Descompotition Into Factors****");
     Console.WriteLine();
     Console.Write("Type The Number That You Want To Be Decomposed: ");
     int number = int.Parse(Console.ReadLine()!);
@@ -72,7 +72,7 @@ void DecompositionByFactors()
 void SandGlass()
 {
     #region 34-HourGlass
-    Console.WriteLine("        ****HourGlass****");
+    Console.WriteLine("****HourGlass****");
     Console.WriteLine();
     Console.Write("Enter The Order Of The Matrix: ");
     int order = int.Parse(Console.ReadLine()!);
@@ -109,6 +109,7 @@ void MatrixesMultiplication()
 
     Console.Write("Please Enter The Value Of P:");
     var p = int.Parse(Console.ReadLine()!);
+    Console.WriteLine();
 
     List<List<int>> matrixA = new List<List<int>>();
     MatrixMultiplication.MakeMatrixA(matrixA, m, n);
@@ -138,8 +139,9 @@ int Menu()
     Console.WriteLine("   4. Harvesting On Horseback");
     Console.WriteLine("   5. Horses In Conflict");
     Console.WriteLine("   0. Exit");
-    Console.Write("    Choose The Option:  ");
-    Console.WriteLine();
+    Console.Write("     Choose The Option:  ");
     var option = Console.ReadLine();
+    Console.WriteLine();
+
     return Convert.ToInt32(option);
 }
