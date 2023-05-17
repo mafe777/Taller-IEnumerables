@@ -15,21 +15,21 @@ var p = int.Parse(Console.ReadLine()!);
 List<List<int>> matrixA = new List<List<int>>();
 MatrixMultiplication.MakeMatrixA(matrixA, m, n);
 Console.WriteLine("--- A ---");
-Console.Write(Matrixmultiplication.ShowMatrix(matrixA, m, n));
+Console.Write(MatrixMultiplication.ShowMatrix(matrixA, m, n));
 
 List<List<int>> matrixB = new List<List<int>>();
-Matrixmultiplication.MakeMatrixB(matrixB, n, p);
+MatrixMultiplication.MakeMatrixB(matrixB, n, p);
 Console.WriteLine("--- B ---");
-Console.Write(Matrixmultiplication.ShowMatrix(matrixB, n, p));
+Console.Write(MatrixMultiplication.ShowMatrix(matrixB, n, p));
 
-List<List<int>> matrixC = Matrixmultiplication.MatrixMultiplication(matrixA, matrixB);
+List<List<int>> matrixC = MatrixMultiplication.MatrixMultiplication(matrixA, matrixB);
 Console.WriteLine("--- C ---");
-Console.Write(Matrixmultiplication.ShowMatrix(matrixC, m, p));
+Console.Write(MatrixMultiplication.ShowMatrix(matrixC, m, p));
 Console.WriteLine();
 #endregion*/
 
 #region 34-HourGlass
-Console.WriteLine("        ****Sand Clock****");
+Console.WriteLine("        ****HourGlass****");
 Console.Write("Enter The Order Of The Matrix: ");
 int order = int.Parse(Console.ReadLine()!);
 Console.WriteLine();
@@ -54,7 +54,7 @@ Console.WriteLine(MOM);
 Console.WriteLine("   ****Descompotition Into Factors****");
 Console.WriteLine();
 Console.Write("Type The Number That You Want To Be Decomposed: ");
-int number = int.Parse(Console.ReadLine());
+int number = int.Parse(Console.ReadLine()!);
 
 List<int> factors = DescompotitionIntoFactors.GetPrimeFactors(number);
 
