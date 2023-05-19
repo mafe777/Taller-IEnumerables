@@ -19,12 +19,10 @@ namespace IEnumerables.Logic
                 {
                     factors.Add(divisor);
                     number /= divisor;
-
                 }
                 else
                 {
                     divisor++;
-
                 }
 
             }

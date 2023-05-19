@@ -19,7 +19,7 @@ do
 
 void Conflicts()
 {
-    #region 37-Horses In Conflict
+    #region 37-Horses In Conflict  //using dictionary and linked lists
     Console.WriteLine("****Horses In Conflict****");
     Console.WriteLine();
     Console.Write("Enter The Position Of The Horses: ");
@@ -41,7 +41,7 @@ void Conflicts()
 
 void Harvesting()
 {
-    #region 36-Harvesting On Horseback
+    #region 36-Harvesting On Horseback  //using arrays
     Console.WriteLine("****Harvesting On Horseback****");
     Console.WriteLine();
     Console.Write("Please Enter The location of the fruits: ");
@@ -69,7 +69,7 @@ void Harvesting()
 
 void DecompositionByFactors()
 {
-    #region 35-Descompotition Into Factors
+    #region 35-Descompotition Into Factors  //using lists
     Console.WriteLine("****Descompotition Into Factors****");
     Console.WriteLine();
     Console.Write("Type The Number That You Want To Be Decomposed: ");
@@ -91,7 +91,7 @@ void DecompositionByFactors()
 
 void SandGlass()
 {
-    #region 34-HourGlass
+    #region 34-HourGlass //using arrays
     Console.WriteLine("****HourGlass****");
     Console.WriteLine();
     Console.Write("Enter The Order Of The Matrix: ");
@@ -118,7 +118,7 @@ void SandGlass()
 
 void MatrixesMultiplication()
 {
-    #region 33-Matrix multiplication
+    #region 33-Matrix multiplication //using lists
     Console.WriteLine("****Matrix Multiplication****");
     Console.WriteLine();
 

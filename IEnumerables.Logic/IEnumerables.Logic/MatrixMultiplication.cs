@@ -26,20 +26,6 @@
             }
         }
 
-        public static string ShowMatrix(List<List<int>> matrix, int rows, int columns)
-        {
-            var output = String.Empty;
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    output += matrix[i][j] + " ";
-                }
-                output += "\n";
-            }
-            return output;
-        }
-
         public static List<List<int>> Multiplication(List<List<int>> matrix1, List<List<int>> matrix2)
         {
             int rows1 = matrix1.Count;
@@ -66,6 +52,19 @@
             return product;
         }
 
+        public static string ShowMatrix(List<List<int>> matrix, int rows, int columns)
+        {
+            var output = String.Empty;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    output += matrix[i][j] + " ";
+                }
+                output += "\n";
+            }
+            return output;
+        }
 
     }
 }
