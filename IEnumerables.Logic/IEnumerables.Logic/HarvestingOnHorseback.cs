@@ -146,36 +146,7 @@ namespace IEnumerables.Logic
         }
     }
 
-    //private Dictionary<string, string> field;
-    //private readonly int[] newPositionOfTheHorse;
-
-    //public HarvestingOnHorseback(string fruits, string PositionHorse)
-    //{
-    //    field = new Dictionary<string, string>();
-    //    string[] fruitsArray = fruits.Split(',');
-    //    foreach (string fruit in fruitsArray)
-    //    {
-    //        field[fruit.Substring(0, 2)] = fruit.Substring(2);
-    //    }
-    //    newPositionOfTheHorse = new int[] { 8 - int.Parse(PositionHorse[1].ToString()), PositionHorse[0] - 'A' };
-    //}
-
-    //public string CollectedFruits(string movements)
-    //{
-    //    string collectedFruits = string.Empty;
-    //    foreach (string movement in movements.Split(','))
-    //    {
-    //        int[] newPosition = MoveTheHorse(movement);
-    //        string newPositionStr = (char)('A' + newPosition[1]) + (8 - newPosition[0]).ToString();
-    //        if (field.ContainsKey(newPositionStr))
-    //        {
-    //            collectedFruits += field[newPositionStr];
-    //            field.Remove(newPositionStr);
-    //        }
-    //    }
-    //    return collectedFruits;
-    //}
-
+    
     //private int[] MoveTheHorse(string movement)
     //{
     //    int row = newPositionOfTheHorse[0];

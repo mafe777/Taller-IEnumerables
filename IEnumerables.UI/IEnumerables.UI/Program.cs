@@ -22,8 +22,20 @@ void Conflicts()
     #region 37-Horses In Conflict
     Console.WriteLine("****Horses In Conflict****");
     Console.WriteLine();
-    Console.Write("Please Enter The location of the Horses: ");
-    string horses = Console.ReadLine()!;
+    Console.Write("Enter The Position Of The Horses: ");
+    string locations = Console.ReadLine()!;
+    Console.WriteLine();
+    try
+    {
+        HorsesInConflict.ValidatePositions(locations);
+        HorsesInConflict solver = new HorsesInConflict();
+        solver.CheckEntry(locations);
+        Console.WriteLine(solver.Results());
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
     #endregion*/ 
 }
 
@@ -52,19 +64,7 @@ void Harvesting()
     {
         Console.WriteLine(ex.Message);
     }
-
-    //HarvestingOnHorseback harvest = new HarvestingOnHorseback(fruits, PositionHorse);
-    //string collectedFruits = harvest.CollectedFruits(movements);
-    //try
-    //{
-    //    Console.WriteLine($"The fruits collected Were: {collectedFruits}");
-    //}
-    //catch (Exception ex)
-    //{
-    //    Console.WriteLine($"\nError: {ex.Message}\n");
-    //}
     #endregion*/
-
 }
 
 void DecompositionByFactors()
