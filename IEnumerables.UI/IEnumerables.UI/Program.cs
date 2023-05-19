@@ -55,11 +55,15 @@ void DecompositionByFactors()
     Console.WriteLine("****Descompotition Into Factors****");
     Console.WriteLine();
     Console.Write("Type The Number That You Want To Be Decomposed: ");
+    Console.WriteLine();
+
     int number = int.Parse(Console.ReadLine()!);
 
     List<int> factors = DescompotitionIntoFactors.GetPrimeFactors(number);
 
     Console.Write("Prime Factors of " + number + " : ");
+    Console.WriteLine();
+
     foreach (int factor in factors)
     {
         Console.Write(factor + " ");

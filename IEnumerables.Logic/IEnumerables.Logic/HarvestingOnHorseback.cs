@@ -79,7 +79,7 @@ namespace IEnumerables.Logic
                 default:
                     throw new ArgumentException("Wrong Move");
             }
-            if (row < 0 || row > 7 || column < 0 || column > 7)
+            if (column < 0 || column > 7 || row < 0 || row > 7)
             {
                 throw new ArgumentException("Wrong Move");
             }
