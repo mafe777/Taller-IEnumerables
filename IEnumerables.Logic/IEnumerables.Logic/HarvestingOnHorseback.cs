@@ -39,7 +39,7 @@ namespace IEnumerables.Logic
 
                 if (fruit[2] != '+' && fruit[2] != '-' && fruit[2] != '*' && fruit[2] != '=')
                 {
-                    throw new Exception("The Position Of The Fruits Is Invalid");
+                    throw new Exception("The Fruits Are Invalid. Check Again");
                 }
 
                 field[row, column] = fruit[2];

@@ -48,7 +48,7 @@
             int cols2 = matrix2[0].Count;
             if (cols1 != rows2)
             {
-                throw new ArgumentException("Matrices are not compatible for multiplication.");
+                throw new Exception("Matrices are not compatible for multiplication.");
             }
             List<List<int>> product = new List<List<int>>();
             for (int i = 0; i < rows1; i++)

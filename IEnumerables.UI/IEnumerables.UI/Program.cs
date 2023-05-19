@@ -82,7 +82,7 @@ void DecompositionByFactors()
 
     foreach (int factor in factors)
     {
-        Console.Write(factor + " * ");
+        Console.Write(factor + " x ");
     }
     Console.WriteLine();
 
@@ -100,14 +100,14 @@ void SandGlass()
 
     int[,] matrix = new int[order, order];
     int[,] hourglassmatrix = new int[order, order];
-    Console.WriteLine("Complete Matrix");
+    Console.WriteLine("   Complete Matrix");
     Console.WriteLine();
     HourGlass.GenerateMatrix(matrix, order);
     var MMC = HourGlass.ShowMatrix(matrix, order);
     Console.WriteLine(MMC);
 
     Console.WriteLine();
-    Console.WriteLine("HourGlass");
+    Console.WriteLine("   HourGlass");
     Console.WriteLine();
     HourGlass.GenerateOtherMatrix(matrix, hourglassmatrix, order);
     var MOM = HourGlass.ShowOtherMatrix(hourglassmatrix, order);
@@ -136,16 +136,26 @@ void MatrixesMultiplication()
     MatrixMultiplication.MakeMatrixA(matrixA, m, n);
     Console.WriteLine("--- A ---");
     Console.Write(MatrixMultiplication.ShowMatrix(matrixA, m, n));
+    Console.WriteLine();
 
     List<List<int>> matrixB = new List<List<int>>();
     MatrixMultiplication.MakeMatrixB(matrixB, n, p);
     Console.WriteLine("--- B ---");
     Console.Write(MatrixMultiplication.ShowMatrix(matrixB, n, p));
-
-    List<List<int>> matrixC = MatrixMultiplication.Multiplication(matrixA, matrixB);
-    Console.WriteLine("--- C ---");
-    Console.Write(MatrixMultiplication.ShowMatrix(matrixC, m, p));
     Console.WriteLine();
+    try
+    {
+        List<List<int>> matrixC = MatrixMultiplication.Multiplication(matrixA, matrixB);
+        Console.WriteLine("--- C ---");
+        Console.Write(MatrixMultiplication.ShowMatrix(matrixC, m, p));
+        Console.WriteLine();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+
+    
     #endregion*/
 }
 
@@ -160,7 +170,7 @@ int Menu()
     Console.WriteLine("   4. Harvesting On Horseback");
     Console.WriteLine("   5. Horses In Conflict");
     Console.WriteLine("   0. Exit");
-    Console.Write("     Choose The Option:  ");
+    Console.Write("     Choose One Option:  ");
     var option = Console.ReadLine();
     Console.WriteLine();
 
