@@ -29,6 +29,7 @@ namespace IEnumerables.Logic
 
             }
             return factors;
+            
         }
     }
 }

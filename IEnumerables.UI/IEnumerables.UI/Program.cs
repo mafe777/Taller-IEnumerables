@@ -3,6 +3,7 @@
 int option;
 do
 {
+    Console.WriteLine();
     option = Menu();
     switch (option)
     {
@@ -72,18 +73,16 @@ void DecompositionByFactors()
     Console.WriteLine("****Descompotition Into Factors****");
     Console.WriteLine();
     Console.Write("Type The Number That You Want To Be Decomposed: ");
-    Console.WriteLine();
-
     int number = int.Parse(Console.ReadLine()!);
+    Console.WriteLine();
 
     List<int> factors = DescompotitionIntoFactors.GetPrimeFactors(number);
 
-    Console.Write("Prime Factors of " + number + " : ");
-    Console.WriteLine();
+    Console.Write("Prime Factors of " + number + " = ");
 
     foreach (int factor in factors)
     {
-        Console.Write(factor + " ");
+        Console.Write(factor + " * ");
     }
     Console.WriteLine();
 
