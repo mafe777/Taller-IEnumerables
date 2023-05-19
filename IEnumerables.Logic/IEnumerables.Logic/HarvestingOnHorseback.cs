@@ -8,84 +8,222 @@ namespace IEnumerables.Logic
 {
     public class HarvestingOnHorseback
     {
-        private Dictionary<string, string> field;
-        private readonly int[] newPositionOfTheHorse;
+        public string? Fruits { get; set; }
+        public string? PositionHorse { get; set; }
+        public string? Movements { get; set; }
+        public int FruitsLength { get; set; }
+        public int PositionLength { get; set; }
+        public int MovementsLength { get; set; }
 
-        public HarvestingOnHorseback(string fruits, string PositionHorse)
+        public HarvestingOnHorseback(string? fruits, string? positionHorse, string? movements)
         {
-            field = new Dictionary<string, string>();
-            string[] fruitsArray = fruits.Split(',');
-            foreach (string fruit in fruitsArray)
-            {
-                field[fruit.Substring(0, 2)] = fruit.Substring(2);
-            }
-            newPositionOfTheHorse = new int[] { 8 - int.Parse(PositionHorse[1].ToString()), PositionHorse[0] - 'A' };
+            Fruits = fruits;
+            PositionHorse = positionHorse;
+            Movements = movements;
+            FruitsLength = fruits!.Length;
+            PositionLength = positionHorse!.Length;
+            MovementsLength = movements!.Length;
         }
 
-        public string CollectedFruits(string movements)
+        public string Result()
         {
-            string collectedFruits = string.Empty;
-            foreach (string movement in movements.Split(','))
+            var field = new char[8, 8];
+            var frutos = string.Empty;
+
+            for (int i = 0; i < FruitsLength; i += 4)
             {
-                int[] newPosition = MoveTheHorse(movement);
-                string newPositionStr = (char)('A' + newPosition[1]) + (8 - newPosition[0]).ToString();
-                if (field.ContainsKey(newPositionStr))
+                var fruit = Fruits!.Substring(i, 3);
+
+                int row = PositionRow(fruit[1], "Fruit");
+                int column = PositionColumn(fruit[0], "Fruit");
+
+                if (fruit[2] != '+' && fruit[2] != '-' && fruit[2] != '*' && fruit[2] != '=')
                 {
-                    collectedFruits += field[newPositionStr];
-                    field.Remove(newPositionStr);
+                    throw new Exception("The Position Of The Fruits Is Invalid");
                 }
+
+                field[row, column] = fruit[2];
             }
-            return collectedFruits;
+
+            int rowhorse = PositionRow(PositionHorse![1], "Horse");
+            int columnHorse = PositionColumn(PositionHorse[0], "Horse");
+            int newRow, newColumn;
+
+            for (int i = 0; i < MovementsLength; i += 3)
+            {
+                var indication = Movements!.Substring(i, 2);
+
+                if (indication.Equals("UL"))
+                {
+                    newRow = rowhorse - 2;
+                    newColumn = columnHorse - 1;
+                }
+                else if (indication.Equals("UR"))
+                {
+                    newRow = rowhorse - 2;
+                    newColumn = columnHorse + 1;
+                }
+                else if (indication.Equals("LU"))
+                {
+                    newRow = rowhorse - 1;
+                    newColumn = columnHorse - 2;
+                }
+                else if (indication.Equals("LD"))
+                {
+                    newRow = rowhorse + 1;
+                    newColumn = columnHorse - 2;
+                }
+                else if (indication.Equals("RU"))
+                {
+                    newRow = rowhorse - 1;
+                    newColumn = columnHorse + 2;
+                }
+                else if (indication.Equals("RD"))
+                {
+                    newRow = rowhorse + 1;
+                    newColumn = columnHorse + 2;
+                }
+                else if (indication.Equals("DL"))
+                {
+                    newRow = rowhorse + 2;
+                    newColumn = columnHorse - 1;
+                }
+                else if (indication.Equals("DR"))
+                {
+                    newRow = rowhorse + 2;
+                    newColumn = columnHorse + 1;
+                }
+                else
+                {
+                    throw new Exception("Incorrect Movements");
+                }
+
+                if ((field[newRow, newColumn] == '+')
+                    || (field[newRow, newColumn] == '-')
+                    || (field[newRow, newColumn] == '*')
+                    || (field[newRow, newColumn] == '='))
+                {
+                    frutos += $"{field[newRow, newColumn]} ";
+                }
+
+                rowhorse = newRow;
+                columnHorse = newColumn;
+            }
+
+            return frutos;
         }
 
-        private int[] MoveTheHorse(string movement)
+        private static int PositionRow(char? data, string? type)
         {
-            int row = newPositionOfTheHorse[0];
-            int column = newPositionOfTheHorse[1];
-            switch (movement)
+            return data switch
             {
-                case "UL":
-                    row -= 2;
-                    column -= 1;
-                    break;
-                case "UR":
-                    row -= 2;
-                    column += 1;
-                    break;
-                case "LU":
-                    row -= 1;
-                    column -= 2;
-                    break;
-                case "LD":
-                    row += 1;
-                    column -= 2;
-                    break;
-                case "RU":
-                    row -= 1;
-                    column += 2;
-                    break;
-                case "RD":
-                    row += 1;
-                    column += 2;
-                    break;
-                case "DL":
-                    row += 2;
-                    column -= 1;
-                    break;
-                case "DR":
-                    row += 2;
-                    column += 1;
-                    break;
-                default:
-                    throw new ArgumentException("Wrong Move");
-            }
-            if (column < 0 || column > 7 || row < 0 || row > 7)
+                '8' => 0,
+                '7' => 1,
+                '6' => 2,
+                '5' => 3,
+                '4' => 4,
+                '3' => 5,
+                '2' => 6,
+                '1' => 7,
+                _ => throw new Exception($"{type} Invalid Position"),
+            };
+        }
+
+        private static int PositionColumn(char? data, string? type)
+        {
+            return data switch
             {
-                throw new ArgumentException("Wrong Move");
-            }
-            newPositionOfTheHorse[0] = row;
-            newPositionOfTheHorse[1] = column;
-            return newPositionOfTheHorse;
+                'A' => 0,
+                'B' => 1,
+                'C' => 2,
+                'D' => 3,
+                'E' => 4,
+                'F' => 5,
+                'G' => 6,
+                'H' => 7,
+                _ => throw new Exception($"{type} Invalid Position"),
+            };
         }
     }
+
+    //private Dictionary<string, string> field;
+    //private readonly int[] newPositionOfTheHorse;
+
+    //public HarvestingOnHorseback(string fruits, string PositionHorse)
+    //{
+    //    field = new Dictionary<string, string>();
+    //    string[] fruitsArray = fruits.Split(',');
+    //    foreach (string fruit in fruitsArray)
+    //    {
+    //        field[fruit.Substring(0, 2)] = fruit.Substring(2);
+    //    }
+    //    newPositionOfTheHorse = new int[] { 8 - int.Parse(PositionHorse[1].ToString()), PositionHorse[0] - 'A' };
+    //}
+
+    //public string CollectedFruits(string movements)
+    //{
+    //    string collectedFruits = string.Empty;
+    //    foreach (string movement in movements.Split(','))
+    //    {
+    //        int[] newPosition = MoveTheHorse(movement);
+    //        string newPositionStr = (char)('A' + newPosition[1]) + (8 - newPosition[0]).ToString();
+    //        if (field.ContainsKey(newPositionStr))
+    //        {
+    //            collectedFruits += field[newPositionStr];
+    //            field.Remove(newPositionStr);
+    //        }
+    //    }
+    //    return collectedFruits;
+    //}
+
+    //private int[] MoveTheHorse(string movement)
+    //{
+    //    int row = newPositionOfTheHorse[0];
+    //    int column = newPositionOfTheHorse[1];
+    //    switch (movement)
+    //    {
+    //        case "UL":
+    //            row -= 2;
+    //            column -= 1;
+    //            break;
+    //        case "UR":
+    //            row -= 2;
+    //            column += 1;
+    //            break;
+    //        case "LU":
+    //            row -= 1;
+    //            column -= 2;
+    //            break;
+    //        case "LD":
+    //            row += 1;
+    //            column -= 2;
+    //            break;
+    //        case "RU":
+    //            row -= 1;
+    //            column += 2;
+    //            break;
+    //        case "RD":
+    //            row += 1;
+    //            column += 2;
+    //            break;
+    //        case "DL":
+    //            row += 2;
+    //            column -= 1;
+    //            break;
+    //        case "DR":
+    //            row += 2;
+    //            column += 1;
+    //            break;
+    //        default:
+    //            throw new Exception("Wrong Move");
+    //    }
+    //    if (column < 0 || column > 7 || row < 0 || row > 7)
+    //    {
+    //        throw new Exception("Wrong Move");
+    //    }
+    //    newPositionOfTheHorse[0] = row;
+    //    newPositionOfTheHorse[1] = column;
+    //    return newPositionOfTheHorse;
+    //}
 }
+    

@@ -21,6 +21,8 @@ void Conflicts()
     #region 37-Horses In Conflict
     Console.WriteLine("****Horses In Conflict****");
     Console.WriteLine();
+    Console.Write("Please Enter The location of the Horses: ");
+    string horses = Console.ReadLine()!;
     #endregion*/ 
 }
 
@@ -34,17 +36,32 @@ void Harvesting()
     Console.WriteLine();
 
     Console.Write("Enter The Initial Position Of The Horse: ");
-    string PositionHorse = Console.ReadLine()!;
+    string positionHorse = Console.ReadLine()!;
     Console.WriteLine();
 
     Console.Write("Enter the Movements That The Horse Will Make: ");
     string movements = Console.ReadLine()!;
     Console.WriteLine();
+    var harvest = new HarvestingOnHorseback(fruits, positionHorse, movements);
+    try
+    {
+        Console.WriteLine($"The collected fruits are: {harvest.Result()}\n");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
 
-    HarvestingOnHorseback harvest = new HarvestingOnHorseback(fruits, PositionHorse);
-    string collectedFruits = harvest.CollectedFruits(movements);
-
-    Console.WriteLine($"The fruits collected Were: {collectedFruits}");
+    //HarvestingOnHorseback harvest = new HarvestingOnHorseback(fruits, PositionHorse);
+    //string collectedFruits = harvest.CollectedFruits(movements);
+    //try
+    //{
+    //    Console.WriteLine($"The fruits collected Were: {collectedFruits}");
+    //}
+    //catch (Exception ex)
+    //{
+    //    Console.WriteLine($"\nError: {ex.Message}\n");
+    //}
     #endregion*/
 
 }
@@ -96,6 +113,7 @@ void SandGlass()
     HourGlass.GenerateOtherMatrix(matrix, hourglassmatrix, order);
     var MOM = HourGlass.ShowOtherMatrix(hourglassmatrix, order);
     Console.WriteLine(MOM);
+
     #endregion*/
 }
 
